@@ -1,7 +1,6 @@
 #PY4E TIME CALCULATOR ASSIGNMENT.
 
 def add_time(start, duration, day=False):
-    #BREAK STRING INPUTS & ASSIGN INTEGERS TO VARIABLES.
     try:
         strt = start.split()
         dur = duration.split(':')
@@ -36,50 +35,31 @@ def add_time(start, duration, day=False):
     nod = ndl.replace('n', str(ndays), 1)
 
     #PRINT THE NEW TIME DEPENDING ON THE DAY OF WEEK INPUT
-    ans1 = None
-    new_time = None
     if day :
-        #LOCATE THE DAY OF THE WEEK
-        ky = 0
-        dayy = None
-        dayy = day.lower()
-        daysow = {'monday' : 1, 'tuesday' : 2, 'wednesday' : 3, 'thursday' : 4, 'friday' : 5, 'saturday' : 6, 'sunday' : 7}
+        dy = day.capitalize()
+        daysow = {'Monday' : 1, 'Tuesday' : 2, 'Wednesday' : 3, 'Thursday' : 4, 'Friday' : 5, 'Saturday' : 6, 'Sunday' : 7}
         for key,val in daysow.items() :
-            if key == dayy :
-                ky = val
-                break
-        #CALCULATE NEW DAY VALUE
-        nndays = ndays
+            if key == dy : ky = val
+
+        dys = ndays
         if ky == 7 : ky = 0
-        while nndays > 0 :
+        while dys > 0 :
             ky += 1
-            nndays -= 1
+            dys -= 1
             if ky == 7 : ky = 0
         if ky == 0 : ky = 7
-        #LOCATE THE KEY AND VALUE IN DICTIONARY
-        dow = ''
-        daysow1 = {'Monday' : 1, 'Tuesday' : 2, 'Wednesday' : 3, 'Thursday' : 4, 'Friday' : 5, 'Saturday' : 6, 'Sunday' : 7}
-        for key,val in daysow1.items() :
+
+        for key,val in daysow.items() :
             if val == ky :
                 dow = key
-                break
 
         #STRINGING ANDWERS TOGETHER
-        ans1 = ans + ','
-        dow1 = ' ' + dow
-        if ndays == 0 :
-            #new_time = '{}, {}'.format(ans, dow)
-            new_time = ans1 + dow1
-        elif ndays == 1 :
-            new_time = ans1 + dow1 + (' ' + '(next day)')
-        elif ndays > 1 :
-            new_time = ans1 + dow1 + (' ' + nod)
+        if ndays == 0 : new_time = '{}, {}'.format(ans, dow)
+        elif ndays == 1 : new_time = '{}, {} (next day)'.format(ans, dow)
+        elif ndays > 1 : new_time = '{}, {} {}'.format(ans, dow, nod)
     else :
-        if ndays == 0 :
-            new_time = ans
-        elif ndays == 1 :
-            new_time = ans + (' ' + '(next day)')
-        elif ndays > 1 :
-            new_time = ans + (' ' + nod)
+        if ndays == 0 : new_time = ans
+        elif ndays == 1 : new_time = '{} (next day)'.format(ans)
+        elif ndays > 1 : new_time = '{} {}'.format(ans, nod)
 
     return new_time

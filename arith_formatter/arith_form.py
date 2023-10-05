@@ -45,6 +45,4 @@ def arithmetic_arranger(problems, answers=False):
             fans[2] += '    ' + '-' * (ln + 2)
             if answers: fans[3] += '    ' + ans.rjust(ln + 2)
 
-    #IF STATEMENT TO OUTPUT RESULT W. ANS OR NO ANS.
-    if answers: return '\n'.join(fans)
-    else: return '\n'.join(fans)
+    return '\n'.join(fans)

@@ -12,25 +12,20 @@ def add_time(start, duration, day=False):
         mnt2 = int(dur[1])
         ampm = strt[1]
     except:
-        print('Please enter the correct time formats, eg. 3:00 PM, 3:10, Monday')
         return 'Please enter the correct time formats, eg. 3:00 PM, 3:10, Monday'
 
-    #CONVERT DURATION TIME INTO MINUTES
+    #CONVERT DURATION TIME INTO MINUTES & CALCULATING NEWW TIME.
     mnt3 = (hr2 * 60) + mnt2
-    #CALCULATE NEW TIME
     ndays = 0
     while mnt3 > 0 :
-        #ADDING MINUTES TOGETHER
         mnt1 += 1
         mnt3 -= 1
         if mnt1 == 60 :
             mnt1 = 0
             hr1 += 1
-        #ADDING HOURS, DAYS & TIME OF DAY
         if hr1 == 12 :
             hr1 = 0
-            if ampm == 'AM' :
-                ampm = 'PM'
+            if ampm == 'AM' : ampm = 'PM'
             else :
                 ampm = 'AM'
                 ndays += 1
@@ -73,6 +68,7 @@ def add_time(start, duration, day=False):
         ans1 = ans + ','
         dow1 = ' ' + dow
         if ndays == 0 :
+            #new_time = '{}, {}'.format(ans, dow)
             new_time = ans1 + dow1
         elif ndays == 1 :
             new_time = ans1 + dow1 + (' ' + '(next day)')
@@ -86,12 +82,4 @@ def add_time(start, duration, day=False):
         elif ndays > 1 :
             new_time = ans + (' ' + nod)
 
-    print(new_time)
-
-#PROGRAM STARTUP PAGE
-while True:
-    start = input('Enter the start time:')
-    duration = input('Enter the duration time:')
-    day = input(''''OPTIONAL' Enter the day of the week:''')
-    break
-add_time(start, duration, day)
+    return new_time

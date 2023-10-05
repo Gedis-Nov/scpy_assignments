@@ -12,4 +12,4 @@ probability = prob_calc.experiment(
 print("Probability:", probability)
 
 # Run PROB_CALC_TEST automatically
-#main(module='prob_calc_test', exit=False)
+main(module='prob_calc_test', exit=False)

@@ -8,7 +8,6 @@ class Hat:
         self.content = []
         for k,v in color.items():
             self.content += [k] * int(v)
-            #for i in range(v): self.content.append(k)
 
     def draw(self, n):
         ln = len(self.content)
@@ -36,5 +35,4 @@ def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
                 break
 
         if found: count += 1
-
     return count / num_experiments
